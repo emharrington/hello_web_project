@@ -8,27 +8,10 @@ describe Application do
     let(:app) { Application.new }
 
     context 'GET /hello' do
-        it 'should return "Hello Leo"' do
-            response = get('/hello?name=Leo')
+        it 'should return "Hello!"' do
+            response = get('/hello')
 
-            expect(response.status).to eq(200)
-            expect(response.body).to eq('Hello Leo')
-        end
-
-        it 'should return "Hello Josh"' do
-            response = get('/hello?name=Josh')
-
-            expect(response.status).to eq(200)
-            expect(response.body).to eq('Hello Josh')
-        end
-    end
-
-    context 'POST /sort-names' do
-        it 'should return names sorted in alphbetical order' do
-            response = post('/sort-names', names: 'Joe,Alice,Zoe,Julia,Kieran')
-
-            expect(response.status).to eq(200)
-            expect(response.body).to eq('Alice,Joe,Julia,Kieran,Zoe')         
+            expect(response.body).to include('<h1>Hello!</h1>')
         end
     end
 end
